@@ -1,0 +1,45 @@
+# Data and outputs
+data/raw/
+data/processed/
+data/synthetic/
+outputs/
+*.arrow
+*.parquet
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Environment
+.env
+.venv/
+venv/
+uv.lock
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# wandb
+wandb/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Model artifacts
+*.bin
+*.safetensors
+*.gguf
+*.pt
+*.pth

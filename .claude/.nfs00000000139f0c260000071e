@@ -1,0 +1,7 @@
+{
+  "enabledPlugins": {
+    "fine-tuning@ai-research-skills": true,
+    "post-training@ai-research-skills": true,
+    "inference-serving@ai-research-skills": true
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//home/jovyan/work/**)",
+      "Read(//home/jovyan/work/data/**)",
+      "WebSearch",
+      "Bash(wc:*)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:developer.nvidia.com)",
+      "WebFetch(domain:docs.nvidia.com)",
+      "WebFetch(domain:unsloth.ai)",
+      "WebFetch(domain:docs.unsloth.ai)",
+      "WebFetch(domain:build.nvidia.com)",
+      "WebFetch(domain:research.nvidia.com)",
+      "WebFetch(domain:acecloud.ai)",
+      "WebFetch(domain:docs.vllm.ai)",
+      "WebFetch(domain:blog.vllm.ai)",
+      "WebFetch(domain:vllm.ai)",
+      "WebFetch(domain:docs.api.nvidia.com)",
+      "Bash(find /home/jovyan/work/competition/ -type f -name *.csv -o -name *.json -o -name *.yaml -o -name *.yml -o -name *.py -o -name *.ipynb)",
+      "WebFetch(domain:colab.research.google.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:arxiv.org)",
+      "WebFetch(domain:cameronrwolfe.substack.com)",
+      "WebFetch(domain:verl.readthedocs.io)",
+      "WebFetch(domain:labelstud.io)",
+      "WebFetch(domain:www.promptfoo.dev)",
+      "WebFetch(domain:openreview.net)"
+    ]
+  },
+  "enabledPlugins": {
+    "fine-tuning@ai-research-skills": true,
+    "post-training@ai-research-skills": true,
+    "inference-serving@ai-research-skills": true
+  }
+}

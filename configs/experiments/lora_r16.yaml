@@ -1,0 +1,5 @@
+_base_: ../base.yaml
+
+lora:
+  r: 16
+  lora_alpha: 32

@@ -1,0 +1,95 @@
+project:
+  name: nemotron-reasoning
+  seed: 3407
+  wandb_project: nemotron-reasoning-challenge
+  wandb_entity: null
+
+paths:
+  raw_data_dir: data/raw
+  processed_data_dir: data/processed
+  synthetic_data_dir: data/synthetic
+  output_dir: outputs
+  checkpoint_dir: outputs/checkpoints
+
+data:
+  train_file: train.csv
+  test_file: test.csv
+  val_fraction: 0.1
+  val_strategy: stratified
+  max_seq_length: 4096
+  reasoning_ratio: 0.8
+
+model:
+  name: nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-BF16
+  trust_remote_code: true
+  max_seq_length: 4096
+  load_in_4bit: false
+
+lora:
+  r: 16
+  lora_alpha: 32
+  lora_dropout: 0.0
+  target_modules:
+    - q_proj
+    - k_proj
+    - v_proj
+    - o_proj
+    - gate_proj
+    - up_proj
+    - down_proj
+    - in_proj
+    - out_proj
+  bias: none
+  use_gradient_checkpointing: unsloth
+  use_rslora: false
+
+training:
+  per_device_train_batch_size: 2
+  gradient_accumulation_steps: 8
+  num_train_epochs: 3
+  max_steps: -1
+  learning_rate: 5.0e-5
+  warmup_ratio: 0.05
+  lr_scheduler_type: cosine
+  weight_decay: 0.01
+  optim: adamw_8bit
+  logging_steps: 10
+  save_steps: 200
+  eval_steps: 200
+  bf16: true
+  dataloader_num_workers: 4
+  report_to: wandb
+  save_total_limit: 3
+
+inference:
+  engine: vllm
+  temperature: 1.0
+  top_p: 1.0
+  max_new_tokens: 2048
+  num_generations: 64
+  batch_size: 8
+  gpu_memory_utilization: 0.90
+
+rlvr:
+  enabled: false
+  algorithm: grpo
+  learning_rate: 1.0e-6
+  per_device_train_batch_size: 1
+  gradient_accumulation_steps: 8
+  num_generations: 16
+  max_prompt_length: 1024
+  max_completion_length: 2048
+  temperature: 0.7
+  num_train_epochs: 2
+  kl_coef: 0.001
+  max_grad_norm: 0.5
+  warmup_ratio: 0.1
+  lr_scheduler_type: cosine
+  bf16: true
+  report_to: wandb
+  save_steps: 100
+  logging_steps: 1
+  reward_weights:
+    correctness: 3.0
+    format: 1.0
+    reasoning_quality: 0.5

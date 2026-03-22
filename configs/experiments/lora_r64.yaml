@@ -1,0 +1,8 @@
+_base_: ../base.yaml
+
+lora:
+  r: 64
+  lora_alpha: 128
+
+training:
+  learning_rate: 2.0e-5

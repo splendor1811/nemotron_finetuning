@@ -1,0 +1,14 @@
+_base_: base.yaml
+
+model:
+  name: nvidia/NVIDIA-Nemotron-3-Nano-30B-A3B-BF16
+  max_seq_length: 8192
+
+inference:
+  engine: vllm
+  temperature: 1.0
+  top_p: 1.0
+  max_new_tokens: 2048
+  num_generations: 64
+  batch_size: 16
+  gpu_memory_utilization: 0.92
